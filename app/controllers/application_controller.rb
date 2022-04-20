@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  def enhanced_order
+    @enhanced_order ||= Product.where(id: @order.keys).map {|product| { product:product } }
+  end
+  helper_method :enhanced_order
+
 end

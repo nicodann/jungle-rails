@@ -14,42 +14,10 @@
           </tr>
         </thead>
         <tbody>
-          
-          
 
           <% @order.line_items.each do |item| %>
-            <% Product.where(id: item.product_id).each do |product| %>
-              <tr>
-                <td>
-                  <%= image_tag product.image.tiny %>
-                </td>
-                <td>
-                  <h4><%= product.name %></h4>
-                  <br>
-                  <p><%= product.description %></p>
-                </td>
-                <td>
-                  <%= humanized_money_with_symbol product.price %>
-                </td>
-                <td>
-                  
-                  <%= product.quantity %>
-                  
-                </td>
-                <td>
-                  <%= humanized_money_with_symbol product.price * product.quantity %>
-                </td>
-              </tr>
-
-            <% end %>
+            <%= render 'order_item', item: item%>
           <% end %>
-          
-            
-
-           
-          
-          
-          
         </tbody>
         <tfoot>
           <tr>
@@ -57,14 +25,14 @@
               TOTAL:
             </th>
             <th>
-              <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+              <%= humanized_money_with_symbol @order.total_cents / 100 %>
             </th>
           </tr>
         </tfoot>
       </table>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order <%= @order.email%>!</h4>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
