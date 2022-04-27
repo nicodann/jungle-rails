@@ -1,0 +1,22 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:        1px solid #ccc;
+    border-radius: 5px;
+    padding:       15px;
+    padding-bottom: 80px;
+    margin-top:    20px;
+    background: #EEE;
+    min-width: 25%;
+    .title {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  
+}
